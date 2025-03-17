@@ -1,5 +1,5 @@
 [requires]
-qt/6.5.2  # Replace with the latest version available
+qt/6.7.3
 
 [generators]
 CMakeDeps
