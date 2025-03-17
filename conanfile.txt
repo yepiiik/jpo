@@ -1,0 +1,11 @@
+[requires]
+qt/6.5.2  # Replace with the latest version available
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+qt/*:shared=True
+qt/*:gui=True
+qt/*:widgets=True
