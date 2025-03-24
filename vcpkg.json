@@ -1,0 +1,9 @@
+{
+    "name": "jpo-app",
+    "version": "1.0.0",
+    "dependencies": [
+        "qt5[essentials]",
+        "nlohmann-json",
+        "curl"
+    ]
+} 

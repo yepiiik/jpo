@@ -1,2 +1,9 @@
-.vscode/
-build/
+.DS_Store
+.vscode
+.env
+.env.local
+.env.development
+.env.production
+
+vcpkg_installed
+build
