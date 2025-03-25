@@ -2,8 +2,16 @@
     "name": "jpo-app",
     "version": "1.0.0",
     "dependencies": [
-        "qt5[essentials]",
-        "nlohmann-json",
-        "curl"
-    ]
-} 
+        {
+            "name": "qt5",
+            "features": [ "essentials" ]
+        },
+        {
+            "name": "nlohmann-json"
+        },
+        {
+            "name": "curl"
+        }
+    ],
+    "builtin-baseline": "21816e0df975ab3ba13ab75263c4deeb080ef681"
+}
