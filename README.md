@@ -12,30 +12,24 @@
 ```bash
 git clone https://github.com/Microsoft/vcpkg.git
 cd vcpkg
-./bootstrap-vcpkg.bat
+.\bootstrap-vcpkg.bat
+```
+2. In ```CMakePresets.json``` change ```[path_to_vcpkg]``` to actual path of installed vcpkg in previous step
+```
+"cacheVariables": {
+    "CMAKE_TOOLCHAIN_FILE": "[path_to_vcpkg]/scripts/buildsystems/vcpkg.cmake"
+}
 ```
 
-2. Install required packages:
-```bash
-vcpkg install qt5[essentials] --triplet=x64-windows --binarysource=default
-vcpkg install nlohmann-json --triplet=x64-windows --binarysource=default    
-vcpkg install curl  --triplet=x64-windows --binarysource=default
-```
 
 ## Building
 
-1. Create a build directory:
+- Run build script for debug version:
 ```bash
-mkdir build
-cd build
+.\build_default_windows.bat
 ```
-
-2. Configure with CMake:
+or
+- Run build script for release version::
 ```bash
-cmake .. -DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake
-```
-
-3. Build the project:
-```bash
-cmake --build .
+.\build_release_windows.bat
 ```
