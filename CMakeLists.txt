@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+# set(VCPKG_TARGET_TRIPLET x64-windows-static)
 
 # Find required packages
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
@@ -15,8 +16,6 @@ add_executable(jpo-app
     src/main.cpp
     src/mainwindow.cpp
     src/mainwindow.h
-    src/wallpaperservice.cpp
-    src/wallpaperservice.h
 )
 
 # Include directories

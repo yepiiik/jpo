@@ -1,4 +1,2 @@
-mkdir build
-cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
-cmake --build .
+cmake --preset=default
+cmake --build --preset=default
