@@ -3,15 +3,7 @@
     "version": "1.0.0",
     "dependencies": [
         {
-            "name": "qt5",
-            "features": [ "essentials" ]
-        },
-        {
-            "name": "nlohmann-json"
-        },
-        {
-            "name": "curl"
+            "name": "qtbase"
         }
-    ],
-    "builtin-baseline": "21816e0df975ab3ba13ab75263c4deeb080ef681"
+    ]
 }

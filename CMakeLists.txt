@@ -6,10 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-# set(VCPKG_TARGET_TRIPLET x64-windows-static)
 
 # Find required packages
-find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 # Get all source files
 file(GLOB_RECURSE SOURCES 
@@ -28,6 +27,5 @@ target_include_directories(jpo-app PRIVATE
 
 # Link libraries
 target_link_libraries(jpo-app PRIVATE
-    Qt5::Widgets
-    Qt5::Network
+    Qt6::Widgets
 ) 

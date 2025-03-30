@@ -2,10 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QNetworkInterface>
 
+class QLabel;
+class QWidget;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -13,18 +12,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-private slots:
-    void toggleDnsConfiguration();
-    bool setCustomDns(const QString& dnsAddress);
-    bool removeCustomDns();
-
 private:
-    QPushButton *m_button;
-    QLineEdit *m_dnsInput;
-    QString m_originalDns;
-    bool m_isDnsActive;
-    void updateButtonState();
+    QLabel *mLabel;
 };
 
 #endif // MAINWINDOW_H 

@@ -2,9 +2,14 @@
 
 ## Stack
 
-- CMake 3.15 or higher
-- vcpkg package manager
-- C++17 compatible compiler
+- C++
+- Qt6 (for GUI)
+
+## Building tools
+
+- CMake
+- vcpkg (packet manager)
+- C++17 compiler
 
 ## Setup
 
@@ -24,12 +29,22 @@ cd vcpkg
 
 ## Building
 
-- Run build script for debug version:
+The building process is split in two modes: ```debug``` and ```release```.
+In debug mode the application will use dynamic linking - that means that additional ```.dll``` files will be attached to ```.exe``` file. On the other hand relase mode will generate only ```.exe``` file after build.
+
+> [!IMPORTANT]  
+> Default configuration assumes that project is building for x64-windows platform. . Default generator is set as Visual Studio 2022, therefor make sure Visual Studio 2022 installed.
+> In case you want to run build under Linux, MacOS or use different genretor - welcome for changing ```CMakePresets.json```
+
+Build will be stored in ```/build/[build-mode]``` folder
+
+### Debug version (dynamic linking):
 ```bash
 .\build_default_windows.bat
 ```
-or
-- Run build script for release version::
+
+---
+### Release version (static linking):
 ```bash
 .\build_release_windows.bat
 ```
