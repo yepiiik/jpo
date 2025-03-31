@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "dependencies": [
         {
-            "name": "qtbase"
+            "name": "qt5",
+            "features": ["essentials"],
+            "default-features": true
         }
     ]
 }

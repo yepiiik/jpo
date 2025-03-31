@@ -8,7 +8,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find required packages
-find_package(Qt6 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # Get all source files
 file(GLOB_RECURSE SOURCES 
@@ -27,5 +27,5 @@ target_include_directories(jpo-app PRIVATE
 
 # Link libraries
 target_link_libraries(jpo-app PRIVATE
-    Qt6::Widgets
+    Qt5::Widgets
 ) 
