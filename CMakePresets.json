@@ -4,34 +4,27 @@
     {
       "name": "base",
       "hidden": true,
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
         "VCPKG_TARGET_TRIPLET": "x64-windows-static",
-        "VCPKG_INSTALL_OPTIONS": "--clean-buildtrees-after-build"
+        "VCPKG_INSTALL_OPTIONS": "--clean-buildtrees-after-build",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
       "name": "default",
-      "displayName": "Default Config",
-      "description": "Default build using Visual Studio 2022",
-      "generator": "Visual Studio 17 2022",
-      "binaryDir": "${sourceDir}/build",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
       "name": "release",
-      "displayName": "Release Config",
-      "description": "Release build using Visual Studio 2022",
-      "generator": "Visual Studio 17 2022",
-      "binaryDir": "${sourceDir}/build",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ],
@@ -39,12 +32,14 @@
     {
       "name": "default",
       "configurePreset": "default",
-      "displayName": "Default Build"
+      "displayName": "Default Build",
+      "configuration": "Debug"
     },
     {
       "name": "release",
       "configurePreset": "release",
-      "displayName": "Release Build"
+      "displayName": "Release Build",
+      "configuration": "Release"
     }
   ]
 } 

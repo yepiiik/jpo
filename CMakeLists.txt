@@ -17,7 +17,7 @@ file(GLOB_RECURSE SOURCES
 )
 
 # Add executable
-add_executable(jpo-app ${SOURCES})
+add_executable(jpo-app WIN32 ${SOURCES})
 
 # Include directories
 target_include_directories(jpo-app PRIVATE
@@ -29,3 +29,14 @@ target_include_directories(jpo-app PRIVATE
 target_link_libraries(jpo-app PRIVATE
     Qt5::Widgets
 ) 
+
+# Ensure Windows GUI application mode (for MSVC)
+if (MSVC)
+    set_target_properties(jpo-app PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS"
+    )
+endif()
+
+set_target_properties(jpo-app PROPERTIES
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)

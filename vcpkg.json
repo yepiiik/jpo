@@ -4,8 +4,7 @@
     "dependencies": [
         {
             "name": "qt5",
-            "features": ["essentials"],
-            "default-features": true
+            "features": ["essentials"]
         }
     ]
 }

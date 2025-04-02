@@ -60,3 +60,8 @@ VCPKG packet manager introduces convenient way to install dependencies for C++ p
 1. ```vcpkg install --info``` - one of the most important list of parameters that should be reviewed before using ```vcpkg install```.
     - By default vcpkg will build each dependency library from scratch - that means it will take some time (for Qt5 approximately an hour) and considerable amount of disk space (for Qt5 approximately 30GB). It is done to ensure integrity with your environment (OS, compilers, etc.). To minimalize disk usage it is often useful to use ```--clean-buildtrees-after-build``` parameter (all raw data will be removed and only built version stored on disk)
 2. ```vcpkg.json``` - file for listing necessary dependencies. ```vcpkg install``` will use this as a manifest (the same way ```npm install``` do for ```npm_packages.json``` in JavaScript)
+
+## CMake usage notes
+
+1. Difference in generators is crutial.
+    - Debug and Release build options configured using different parameters. For example ```Visual Studio 17 2022``` generator uses ```configuration``` parameter to set build type, at the same time ```Ninja``` generator uses ```CMAKE_BUILD_TYPE``` parameter that affects build type. You must use appropriate parameter in order to force your builder do what you want. Presets can be created in ```CMakePresests.json``` to simplify building process.
