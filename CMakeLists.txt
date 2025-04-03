@@ -8,7 +8,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find required packages
-find_package(Qt6 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # Get all source files
 file(GLOB_RECURSE SOURCES 
@@ -17,7 +17,7 @@ file(GLOB_RECURSE SOURCES
 )
 
 # Add executable
-add_executable(jpo-app ${SOURCES})
+add_executable(jpo-app WIN32 ${SOURCES})
 
 # Include directories
 target_include_directories(jpo-app PRIVATE
@@ -27,5 +27,16 @@ target_include_directories(jpo-app PRIVATE
 
 # Link libraries
 target_link_libraries(jpo-app PRIVATE
-    Qt6::Widgets
+    Qt5::Widgets
 ) 
+
+# Ensure Windows GUI application mode (for MSVC)
+if (MSVC)
+    set_target_properties(jpo-app PROPERTIES
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS"
+    )
+endif()
+
+set_target_properties(jpo-app PROPERTIES
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
