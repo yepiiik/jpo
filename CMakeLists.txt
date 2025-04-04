@@ -8,7 +8,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # Find required packages
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
 
 # Get all source files
 file(GLOB_RECURSE SOURCES 
@@ -28,6 +28,7 @@ target_include_directories(jpo-app PRIVATE
 # Link libraries
 target_link_libraries(jpo-app PRIVATE
     Qt5::Widgets
+    Qt5::Network
 ) 
 
 # Ensure Windows GUI application mode (for MSVC)
