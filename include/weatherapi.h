@@ -11,6 +11,7 @@ public:
     explicit WeatherApi(QObject *parent = nullptr);
     void fetchWeather(double lat, double lon);
     void searchLocation(const QString &location);
+    void fetchLocationFromIP();  // New method
 
 signals:
     void weatherReceived(double temperature, double windspeed);
@@ -21,6 +22,6 @@ private:
     QNetworkAccessManager *networkManager;
     void handleWeatherResponse(QNetworkReply *reply);
     void handleLocationResponse(QNetworkReply *reply);
+    void handleIPResponse(QNetworkReply *reply);  // New handler
 };
-
 #endif // WEATHERAPI_H

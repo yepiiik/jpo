@@ -13,6 +13,9 @@ int main(int argc, char *argv[])
     QObject::connect(&view, &WeatherView::locationRequested,
                      &api, &WeatherApi::searchLocation);
     
+    QObject::connect(&view, &WeatherView::useIPLocationRequested,
+                     &api, &WeatherApi::fetchLocationFromIP);
+
     // Connect api results to view
     QObject::connect(&api, &WeatherApi::weatherReceived,
                      &view, &WeatherView::displayWeather);

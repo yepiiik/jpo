@@ -16,13 +16,14 @@ public:
 
 signals:
     void locationRequested(const QString &location);
+    void useIPLocationRequested();  // New signal
 
 private:
     QLineEdit *locationInput;
     QPushButton *searchButton;
+    QPushButton *detectLocationButton;  // New button
     QLabel *temperatureLabel;
     QLabel *windLabel;
     QLabel *statusLabel;
 };
-
 #endif // WEATHERVIEW_H

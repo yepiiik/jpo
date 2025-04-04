@@ -13,8 +13,11 @@ WeatherView::WeatherView(QWidget *parent) : QMainWindow(parent)
     QHBoxLayout *searchLayout = new QHBoxLayout();
     locationInput = new QLineEdit();
     searchButton = new QPushButton("Search");
+    detectLocationButton = new QPushButton("Detect My Location");  // New button
+    
     searchLayout->addWidget(locationInput);
     searchLayout->addWidget(searchButton);
+    searchLayout->addWidget(detectLocationButton);
 
     temperatureLabel = new QLabel("Temperature: -");
     windLabel = new QLabel("Wind: -");
@@ -30,6 +33,11 @@ WeatherView::WeatherView(QWidget *parent) : QMainWindow(parent)
 
     connect(searchButton, &QPushButton::clicked, [this]() {
         emit locationRequested(locationInput->text());
+    });
+    
+    connect(detectLocationButton, &QPushButton::clicked, [this]() {
+        emit useIPLocationRequested();
+        statusLabel->setText("Detecting location...");
     });
 }
 

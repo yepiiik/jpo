@@ -72,3 +72,34 @@ void WeatherApi::handleLocationResponse(QNetworkReply *reply)
     }
     reply->deleteLater();
 }
+
+void WeatherApi::fetchLocationFromIP()
+{
+    QUrl url("https://ipapi.co/json/");
+    QNetworkReply *reply = networkManager->get(QNetworkRequest(url));
+    connect(reply, &QNetworkReply::finished, [this, reply]() {
+        handleIPResponse(reply);
+    });
+}
+
+void WeatherApi::handleIPResponse(QNetworkReply *reply)
+{
+    if (reply->error()) {
+        emit errorOccurred("IP location failed: " + reply->errorString());
+        return;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
+    QJsonObject locationData = doc.object();
+
+    if (locationData.contains("error")) {
+        emit errorOccurred("IP location service unavailable");
+        return;
+    }
+
+    emit locationFound(
+        locationData["latitude"].toDouble(),
+        locationData["longitude"].toDouble()
+    );
+    reply->deleteLater();
+}
