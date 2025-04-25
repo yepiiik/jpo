@@ -1,0 +1,26 @@
+\chapter{JPO project}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{JPO project@{JPO project}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Stack\+:}{Stack\+:}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Qt6 (version 6.\+9.\+0)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Requirements\+:}{Requirements\+:}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Qt6::Quick\ \ }
+\DoxyCodeLine{Qt6::Network}
+\DoxyCodeLine{Qt6::Concurrent}
+\DoxyCodeLine{Qt6::Positioning\ \ \ \ \ //\ Additional\ package}
+\DoxyCodeLine{Qt6::Charts\ \ \ \ \ \ \ \ \ \ //\ Additional\ package}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Build instruction\+:}{Build instruction\+:}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyEnumerate}
+\item Select {\ttfamily Build for Run configuration} in Qt creator {\ttfamily Build} tab Min\+GW compile. That will create {\ttfamily build/\+Desktop\+\_\+\+Qt\+\_\+6\+\_\+9\+\_\+0\+\_\+\+Min\+GW\+\_\+64\+\_\+bit-\/\+Release/} folder
+\item Create folder {\ttfamily windows-\/deploy} inside of release folder
+\item Copy {\ttfamily appjpo.\+exe} to {\ttfamily windows-\/deploy}
+\item In terminal run {\ttfamily windeployqt6.\+exe appjpo.\+exe} 
+\end{DoxyEnumerate}

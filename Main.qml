@@ -1,18 +1,31 @@
-import QtQuick 6.9
-import QtQuick.Controls 6.9  // Unified controls in Qt 6.9 (no "2" suffix)
-import QtLocation 6.9        // Maps
-import QtPositioning 6.9     // GPS coordinates
-import jpo 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import jpo
 
 ApplicationWindow {
+    id: root
+    width: 1200
+    height: 800
     visible: true
-    width: 800
-    height: 600
-    title: "Air Quality Stations"
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            // This will force any focused item to lose focus
+            forceActiveFocus()
+        }
+    }
 
     DataFetcher {
-        id: fetcher
-        onStationsReady: mapComponent.addStations(stations)
+        id: dataFetcher
+        onStationsReady: (stations) => {
+            mapComponent.addStations(stations)
+            stationSearch.stationsModel = dataFetcher.getCachedStations()
+        }
+        onParametersReady: (paramMap) => {
+            parameterPanel.buildParameterList(paramMap)
+        }
     }
 
     MapComponent {
@@ -20,8 +33,44 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    Button {
-        text: "Load Stations"
-        onClicked: fetcher.fetchStations()
+    SensorPanel {
+        id: sensorPanel
+        height: parent.height
+        anchors {
+            top: stationSearch.bottom
+            bottom: parent.bottom
+            left: parent.left
+            margins: 16
+        }
+    }
+
+    StationSearch {
+        id: stationSearch
+        anchors {
+            top: parent.top
+            left: parent.left
+            margins: 16
+        }
+
+        map: mapComponent.map
+    }
+
+    ParameterPanel {
+        id: parameterPanel
+        width: 70
+        height: 300
+
+        anchors.right: parent.right;
+        anchors.bottom: parent.bottom;
+        anchors.margins: 16
+
+        onParameterSelected: (paramCode) => {
+            const stations = dataFetcher.getStationsForParameter(paramCode)
+        }
+    }
+
+
+    Component.onCompleted: {
+        dataFetcher.fetchStations()
     }
 }

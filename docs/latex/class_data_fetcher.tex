@@ -1,0 +1,56 @@
+\doxysection{Data\+Fetcher Class Reference}
+\hypertarget{class_data_fetcher}{}\label{class_data_fetcher}\index{DataFetcher@{DataFetcher}}
+Inheritance diagram for Data\+Fetcher\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_data_fetcher}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_data_fetcher_a7f09f55139f08fe69467ed017aad84c6}\label{class_data_fetcher_a7f09f55139f08fe69467ed017aad84c6} 
+void {\bfseries stations\+Ready} (const QVariant\+List \&stations)
+\item 
+\Hypertarget{class_data_fetcher_a3b0499c0a6daddf2294e0b9d41929001}\label{class_data_fetcher_a3b0499c0a6daddf2294e0b9d41929001} 
+void {\bfseries sensors\+Ready} (const QVariant\+List \&sensors)
+\item 
+\Hypertarget{class_data_fetcher_a8b8309a68dfe97d2e166bdd9e3956d47}\label{class_data_fetcher_a8b8309a68dfe97d2e166bdd9e3956d47} 
+void {\bfseries parameters\+Ready} (const QVariant\+Map meters)
+\item 
+\Hypertarget{class_data_fetcher_ab316fbf208c84e97f02ab8f3dbd31f44}\label{class_data_fetcher_ab316fbf208c84e97f02ab8f3dbd31f44} 
+void {\bfseries error\+Occurred} (const QString \&message)
+\item 
+\Hypertarget{class_data_fetcher_ac30e7a97ed280f71fb3017c96f5e61b2}\label{class_data_fetcher_ac30e7a97ed280f71fb3017c96f5e61b2} 
+void {\bfseries sensor\+Data\+Ready} (int sensor\+Id, QVariant\+List readings)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_data_fetcher_a0a6cdb9b609c3ee3458d238e564fe5cf}\label{class_data_fetcher_a0a6cdb9b609c3ee3458d238e564fe5cf} 
+{\bfseries Data\+Fetcher} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\Hypertarget{class_data_fetcher_a018924393776aef1461287bd7e166917}\label{class_data_fetcher_a018924393776aef1461287bd7e166917} 
+Q\+\_\+\+INVOKABLE void {\bfseries fetch\+Stations} (bool force\+Refresh=false)
+\item 
+\Hypertarget{class_data_fetcher_a29b1153a8bef95c958519352185006e8}\label{class_data_fetcher_a29b1153a8bef95c958519352185006e8} 
+Q\+\_\+\+INVOKABLE void {\bfseries fetch\+Sensors} (int station\+Id)
+\item 
+\Hypertarget{class_data_fetcher_a893c6aca256e7ebe4d56cd4dd411d991}\label{class_data_fetcher_a893c6aca256e7ebe4d56cd4dd411d991} 
+Q\+\_\+\+INVOKABLE void {\bfseries fetch\+All\+Parameters} ()
+\item 
+\Hypertarget{class_data_fetcher_a5d4fd87d9900e84750594f882d26ea91}\label{class_data_fetcher_a5d4fd87d9900e84750594f882d26ea91} 
+Q\+\_\+\+INVOKABLE QVariant\+List {\bfseries get\+Stations\+For\+Parameter} (const QString \&param\+Code)
+\item 
+\Hypertarget{class_data_fetcher_a7adc4a563d8fb1ccc5a652d05b40392a}\label{class_data_fetcher_a7adc4a563d8fb1ccc5a652d05b40392a} 
+Q\+\_\+\+INVOKABLE void {\bfseries fetch\+Sensor\+Data} (int sensor\+Id)
+\item 
+\Hypertarget{class_data_fetcher_a9ced0abcb774cf9abd1752d9afe7918d}\label{class_data_fetcher_a9ced0abcb774cf9abd1752d9afe7918d} 
+Q\+\_\+\+INVOKABLE QVariant\+List {\bfseries get\+Cached\+Stations} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data\+Fetcher.\+h\item 
+Data\+Fetcher.\+cpp\end{DoxyCompactItemize}

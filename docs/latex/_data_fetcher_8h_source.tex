@@ -1,0 +1,47 @@
+\doxysection{Data\+Fetcher.\+h}
+\hypertarget{_data_fetcher_8h_source}{}\label{_data_fetcher_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QNetworkAccessManager>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QDateTime>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QCache>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QColor>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <qelapsedtimer.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}DatabaseManager.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_database_manager}{DatabaseManager}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }DataFetcher\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ DataFetcher(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ Q\_INVOKABLE\ \textcolor{keywordtype}{void}\ fetchStations(\textcolor{keywordtype}{bool}\ forceRefresh\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_INVOKABLE\ \textcolor{keywordtype}{void}\ fetchSensors(\textcolor{keywordtype}{int}\ stationId);}
+\DoxyCodeLine{00019\ \ \ \ \ Q\_INVOKABLE\ \textcolor{keywordtype}{void}\ fetchAllParameters();}
+\DoxyCodeLine{00020\ \ \ \ \ Q\_INVOKABLE\ QVariantList\ getStationsForParameter(\textcolor{keyword}{const}\ QString\&\ paramCode);}
+\DoxyCodeLine{00021\ \ \ \ \ Q\_INVOKABLE\ \textcolor{keywordtype}{void}\ fetchSensorData(\textcolor{keywordtype}{int}\ sensorId);}
+\DoxyCodeLine{00022\ \ \ \ \ Q\_INVOKABLE\ QVariantList\ getCachedStations();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ signals:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ stationsReady(\textcolor{keyword}{const}\ QVariantList\ \&stations);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ sensorsReady(\textcolor{keyword}{const}\ QVariantList\ \&sensors);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ parametersReady(\textcolor{keyword}{const}\ QVariantMap\ meters);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ errorOccurred(\textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ sensorDataReady(\textcolor{keywordtype}{int}\ sensorId,\ QVariantList\ readings);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ QElapsedTimer\ m\_requestTimer;}
+\DoxyCodeLine{00033\ \ \ \ \ QMap<QNetworkReply*,\ qint64>\ m\_requestStartTimes;}
+\DoxyCodeLine{00034\ \ \ \ \ QNetworkAccessManager\ *m\_manager;}
+\DoxyCodeLine{00035\ \ \ \ \ QVariantList\ m\_cachedStations;}
+\DoxyCodeLine{00036\ \ \ \ \ QDateTime\ m\_lastFetchTime;}
+\DoxyCodeLine{00037\ \ \ \ \ QVariantMap\ m\_parameterStationMap;}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_database_manager}{DatabaseManager}}\ m\_dbManager;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ updateParameterMap();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ isCacheValid()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \};}
+
+\end{DoxyCode}
