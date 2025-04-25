@@ -1,0 +1,41 @@
+\doxysection{Database\+Manager Class Reference}
+\hypertarget{class_database_manager}{}\label{class_database_manager}\index{DatabaseManager@{DatabaseManager}}
+Inheritance diagram for Database\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_database_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_database_manager_aebfb8cc7427256623ccbe059b30b6450}\label{class_database_manager_aebfb8cc7427256623ccbe059b30b6450} 
+{\bfseries Database\+Manager} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\Hypertarget{class_database_manager_a6609c455a97ce83e74c5f8e8bc4e0ad8}\label{class_database_manager_a6609c455a97ce83e74c5f8e8bc4e0ad8} 
+void {\bfseries store\+Station} (const QVariant\+Map \&station)
+\item 
+\Hypertarget{class_database_manager_af318bfa6d66b5a622cc17e74a1ce5104}\label{class_database_manager_af318bfa6d66b5a622cc17e74a1ce5104} 
+QVariant\+List {\bfseries get\+All\+Stations} ()
+\item 
+\Hypertarget{class_database_manager_a4e22bda3b42a7dfb2e2e038bfe2ffa68}\label{class_database_manager_a4e22bda3b42a7dfb2e2e038bfe2ffa68} 
+QVariant\+Map {\bfseries get\+Station\+By\+Id} (int id)
+\item 
+\Hypertarget{class_database_manager_a6b9e2cd4635e705c717ae47cf9333c56}\label{class_database_manager_a6b9e2cd4635e705c717ae47cf9333c56} 
+void {\bfseries store\+Sensor} (int station\+Id, const QVariant\+Map \&sensor)
+\item 
+\Hypertarget{class_database_manager_a8983223f483fa5bf68c4f778d07e6a83}\label{class_database_manager_a8983223f483fa5bf68c4f778d07e6a83} 
+QVariant\+List {\bfseries get\+Sensors\+For\+Station} (int station\+Id)
+\item 
+\Hypertarget{class_database_manager_add7c031a1a828c5a566789ce5f114802}\label{class_database_manager_add7c031a1a828c5a566789ce5f114802} 
+void {\bfseries store\+Reading} (int sensor\+Id, const QVariant\+Map \&reading)
+\item 
+\Hypertarget{class_database_manager_af48aa9376b39f29c269f8d4d43f06384}\label{class_database_manager_af48aa9376b39f29c269f8d4d43f06384} 
+QVariant\+List {\bfseries get\+Readings\+For\+Sensor} (int sensor\+Id)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Database\+Manager.\+h\item 
+Database\+Manager.\+cpp\end{DoxyCompactItemize}

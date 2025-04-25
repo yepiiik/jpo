@@ -1,67 +1,22 @@
-# JPO App with Qt GUI
+# JPO project
 
-## Stack
+## Stack:
 
-- C++
-- Qt5 (for GUI)
+- Qt6 (version 6.9.0)
 
-## Building tools
+## Requirements:
 
-- CMake
-- vcpkg (packet manager)
-- C++17 compiler
-
-> Look below for usage notes
-
-## Setup
-
-1. Install vcpkg if you haven't already:
-```bash
-git clone https://github.com/Microsoft/vcpkg.git
-cd vcpkg
-.\bootstrap-vcpkg.bat
 ```
-2. In ```CMakePresets.json``` change ```[path_to_vcpkg]``` to actual path of installed vcpkg in previous step
-```
-"cacheVariables": {
-    "CMAKE_TOOLCHAIN_FILE": "[path_to_vcpkg]/scripts/buildsystems/vcpkg.cmake"
-}
+Qt6::Quick  
+Qt6::Network
+Qt6::Concurrent
+Qt6::Positioning     // Additional package
+Qt6::Charts          // Additional package
 ```
 
+## Build instruction:
 
-## Building
-
-The building process is split in two modes: ```debug``` and ```release```.
-In debug mode the application will use dynamic linking - that means that additional ```.dll``` files will be attached to ```.exe``` file. On the other hand relase mode will generate only ```.exe``` file after build.
-
-> [!IMPORTANT]  
-> Default configuration assumes that project is building for x64-windows platform. . Default generator is set as Visual Studio 2022, therefor make sure Visual Studio 2022 installed.
-> In case you want to run build under Linux, MacOS or use different genretor - welcome for changing ```CMakePresets.json```
-
-Build will be stored in ```/build/[build-mode]``` folder
-
-### Debug version (dynamic linking):
-```bash
-.\build_default_windows.bat
-```
-
----
-### Release version (static linking):
-```bash
-.\build_release_windows.bat
-```
-
----
-
-## VCPKG usage notes
-
-VCPKG packet manager introduces convenient way to install dependencies for C++ projects, however there are some key points that should be considered before using it.
-
-1. ```vcpkg install --info``` - one of the most important list of parameters that should be reviewed before using ```vcpkg install```.
-    - By default vcpkg will build each dependency library from scratch - that means it will take some time (for Qt5 approximately an hour) and considerable amount of disk space (for Qt5 approximately 30GB). It is done to ensure integrity with your environment (OS, compilers, etc.). To minimalize disk usage it is often useful to use ```--clean-buildtrees-after-build``` parameter (all raw data will be removed and only built version stored on disk)
-2. ```vcpkg.json``` - file for listing necessary dependencies. ```vcpkg install``` will use this as a manifest (the same way ```npm install``` do for ```npm_packages.json``` in JavaScript)
-
-## CMake usage notes
-
-1. Difference in generators is crutial.
-    - Debug and Release build options configured using different parameters. For example ```Visual Studio 17 2022``` generator uses ```configuration``` parameter to set build type, at the same time ```Ninja``` generator uses ```CMAKE_BUILD_TYPE``` parameter that affects build type. You must use appropriate parameter in order to force your builder do what you want. Presets can be created in ```CMakePresests.json``` to simplify building process.
+1. Select ```Build for Run configuration``` in Qt creator ```Build``` tab MinGW compile. That will create ```build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/``` folder
+2. Create folder ```windows-deploy``` inside of release folder 
+3. Copy ```appjpo.exe``` to ```windows-deploy```
+4. In terminal run ```windeployqt6.exe appjpo.exe```

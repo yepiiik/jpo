@@ -1,0 +1,41 @@
+\doxysection{Database\+Manager.\+h}
+\hypertarget{_database_manager_8h_source}{}\label{_database_manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QFile>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QJsonArray>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <qmutex.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }DatabaseManager\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{explicit}\ DatabaseManager(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ Station\ operations}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ storeStation(\textcolor{keyword}{const}\ QVariantMap\ \&station);}
+\DoxyCodeLine{00017\ \ \ \ \ QVariantList\ getAllStations();}
+\DoxyCodeLine{00018\ \ \ \ \ QVariantMap\ getStationById(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Sensor\ operations}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ storeSensor(\textcolor{keywordtype}{int}\ stationId,\ \textcolor{keyword}{const}\ QVariantMap\ \&sensor);}
+\DoxyCodeLine{00022\ \ \ \ \ QVariantList\ getSensorsForStation(\textcolor{keywordtype}{int}\ stationId);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Reading\ operations}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ storeReading(\textcolor{keywordtype}{int}\ sensorId,\ \textcolor{keyword}{const}\ QVariantMap\ \&reading);}
+\DoxyCodeLine{00026\ \ \ \ \ QVariantList\ getReadingsForSensor(\textcolor{keywordtype}{int}\ sensorId);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ QString\ m\_jsonFilePath;}
+\DoxyCodeLine{00030\ \ \ \ \ QJsonObject\ m\_jsonData;}
+\DoxyCodeLine{00031\ \ \ \ \ QMutex\ m\_fileMutex;}
+\DoxyCodeLine{00032\ \ \ \ \ QMutex\ m\_dataMutex;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ loadJsonData();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ saveJsonData();}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}

@@ -1,43 +1,65 @@
-cmake_minimum_required(VERSION 3.15)
-project(jpo-app)
+cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_CXX_STANDARD 17)
+project(jpo VERSION 0.1 LANGUAGES CXX)
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
-# Find required packages
-find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
-
-# Get all source files
-file(GLOB_RECURSE SOURCES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
+find_package(Qt6 REQUIRED
+    COMPONENTS
+        Quick
+        Network
+        Positioning
+        Charts
+        Concurrent
 )
 
-# Add executable
-add_executable(jpo-app WIN32 ${SOURCES})
+qt_standard_project_setup(REQUIRES 6.8)
 
-# Include directories
-target_include_directories(jpo-app PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
+qt_add_executable(appjpo
+    main.cpp
+    DataFetcher.cpp
+    DatabaseManager.cpp
 )
 
-# Link libraries
-target_link_libraries(jpo-app PRIVATE
-    Qt5::Widgets
-    Qt5::Network
-) 
+qt_add_qml_module(appjpo
+    URI jpo
+    VERSION 1.0
+    QML_FILES
+        Main.qml
+        MapComponent.qml
+        StationMarker.qml
+        SensorPanel.qml
+        ParameterPanel.qml
+        StationSearch.qml
 
-# Ensure Windows GUI application mode (for MSVC)
-if (MSVC)
-    set_target_properties(jpo-app PROPERTIES
-        LINK_FLAGS "/SUBSYSTEM:WINDOWS"
-    )
-endif()
+    RESOURCES
+        resources/marker.png
+        resources/marker.svg
+)
 
-set_target_properties(jpo-app PROPERTIES
-    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# If you are developing for iOS or macOS you should consider setting an
+# explicit, fixed bundle identifier manually though.
+set_target_properties(appjpo PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appjpo
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
+
+target_link_libraries(appjpo PRIVATE
+    Qt6::Core
+    Qt6::Quick
+    Qt6::Network
+    Qt6::Positioning
+    Qt6::Charts
+    Qt6::Concurrent
+)
+
+include(GNUInstallDirs)
+install(TARGETS appjpo
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
