@@ -36,8 +36,7 @@ if (MSVC)
     set_target_properties(jpo-app PROPERTIES
         LINK_FLAGS "/SUBSYSTEM:WINDOWS"
     )
+    set_target_properties(jpo-app PROPERTIES
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+    )
 endif()
-
-set_target_properties(jpo-app PROPERTIES
-    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
-)
